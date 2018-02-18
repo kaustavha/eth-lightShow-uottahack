@@ -33,6 +33,10 @@ void animation(){
   delay(100);
 }
 
+void cycle(){
+
+}
+
 void allLow(){
   digitalWrite(greenLED,LOW);
   digitalWrite(blueLED,LOW);
@@ -73,6 +77,21 @@ void loop() {
       blueLEDt();
       lastVal=7;
       Serial.print("DONE");
+    }
+    else if(serialInputVal == 8)//Cycle protocol.
+    {
+      if(lastVal==5){
+        redLEDt();
+        lastVal=6;
+      }
+      else if(lastVal==6){
+        greenLEDt();
+        lastVal=5;
+      }
+      else{
+        greenLEDt();
+        lastVal=5;
+      }
     }
     else{
       animation();

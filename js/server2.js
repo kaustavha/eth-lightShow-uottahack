@@ -3,7 +3,15 @@ const contract = require('./onOff2.js')
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => res.send('Hello World!'))
+var SerialPort = require('serialport');
+var arduino = new SerialPort("/dev/ttyACM0",9600);
+
+
+function cycle(){
+getTimeout(function(){ arduino.write("6"); },2000);
+}
+
+app.get('/', (req, cycle) => res.send('Hello World!'))
 
 app.listen(3000, () => {
 	console.log('Example app listening on port 3000!');
@@ -31,3 +39,5 @@ app.listen(3000, () => {
 		});
 	})
 });
+
+arduino.close();
