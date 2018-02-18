@@ -45,7 +45,7 @@ node js/server2.js <address privKey> <string y isDevMode> <string y runArduino>
 
 Navigate to `localhost:3000` to trigger the block chain event again. 
 
-# Troubleshooting
+## Troubleshooting
 
 1. Ensure the serial port for the Arduino is correct in server2.js, on line **20**:
 ```
