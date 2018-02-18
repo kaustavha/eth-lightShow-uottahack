@@ -1,5 +1,3 @@
-
-
 var privateKey = '256357d39b29b6d49bb96b573cb5347b6f004560795e0bf1edf7dbcc1f88edc4';
 
 const isDevMode = false;

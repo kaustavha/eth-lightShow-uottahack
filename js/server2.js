@@ -1,19 +1,5 @@
 const contract = require('./onOff2.js')
 
-
-// var TestRPC = require("ethereumjs-testrpc");
-// var server = TestRPC.server();
-
-
-// var port = 3000;
-// server.listen(port, function() {
-// });
-
-
-// app.listen(port, function() {
-//     homeController.check_health();
-// });
-
 const express = require('express')
 const app = express()
 
@@ -43,10 +29,5 @@ app.listen(3000, () => {
 		}).then(res => {
 			console.log('done', res);
 		});
-
 	})
-	// let c = contract.deploy();
-	// contract.bindEventListener(c);
-	// contract.sendTx(c);
-	// console.log('done');
 });
