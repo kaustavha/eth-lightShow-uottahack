@@ -23,9 +23,25 @@ app.listen(3000, () => {
 	console.log('Example app listening on port 3000!');
 	contract.deploy().then(res => {
 		var c = contract.bindEventListener(res);
-		contract.sendTx(c);
+
+		contract.getState(c).then(console.log)
+		contract.sendTx(c).then(res => {
+			console.log('st', res);
+			return contract.getState(c);
+		}).then(res => {
+			console.log('gt', res);
+			return contract.getState(c);
+		}).then(res => {
+			console.log('gt', res);
+			return contract.sendTx(c);
+		}).then(res => {
+			console.log('st', res);
+			return contract.getState(c);
+		}).then(res => {
+			console.log('done', res);
+		});
 		console.log('done')
-		contract.getState().then(console.log)
+		contract.getState(c).then(console.log)
 	})
 	// let c = contract.deploy();
 	// contract.bindEventListener(c);

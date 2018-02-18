@@ -101,8 +101,10 @@ function deploy() {
 	return new Promise(resolve => {
 		var sendPromise = wallet.sendTransaction(deployTransaction);
 		sendPromise.then(function(transaction) {
+			var contractAddress = ethers.utils.getContractAddress(transaction);
 			let addy = transaction.from;
-			var contract = new ethers.Contract(addy, abiDefinition, wallet);
+			
+			var contract = new ethers.Contract(contractAddress, abiDefinition, wallet);
 			resolve(contract);
 		});
 	})
@@ -118,27 +120,39 @@ function bindEventListener(contract) {
     return contract;
 }
 
-function sendTx(contract) {
-	console.log('sendTx', contract);
-	var overrideOptions = {
-    gasLimit: 250000,
-    gasPrice: 9000000000,
-    nonce: 0,
-    value: ethers.utils.parseEther('1.0')
-};
+// function sendTx(contract) {
+// 	console.log('sendTx', contract);
+// 	var overrideOptions = {
+//     gasLimit: 250000,
+//     gasPrice: 9000000000,
+//     nonce: 0,
+//     value: ethers.utils.parseEther('1.0')
+// };
 
-	var sp = contract.changeState();
-	sp.then(console.log)
+// 	var sp = contract.changeState();
+// 	sp.then(console.log)
 
 
-// contract.functions.changeState(overrideOptions);
-// return sendPromise;
-	// let tx = await contract.functions.changeState(overrideOptions);
+// // contract.functions.changeState(overrideOptions);
+// // return sendPromise;
+// 	// let tx = await contract.functions.changeState(overrideOptions);
+// }
+
+function sendTx(c) {
+	return new Promise(resolve => {
+		c.changeState().then(res => {
+			resolve(res);
+		})
+	})
 }
 
 function getState(c) {
-	return new Promise(res => {
-		c.GetState().then(resolve);
+	return new Promise(resolve => {
+		var sp = c.GetState();
+		sp.then(tx => {
+			resolve(tx);
+		})
+		// c.GetState().then(resolve);
 	})
 }
 
