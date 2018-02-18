@@ -13,7 +13,7 @@
 3. Quickstart
 4. Troubleshooting 
 
-**1. Overview:**
+## **1. Overview:**
 
 LightShow.eth is an interactive art project meant for smart cities!
 
