@@ -14,8 +14,8 @@ process.argv.forEach((val, index) => {
 
 // e.g. node server2.js 0x45.. true true
 var privKey = process.argv[2] || '463bf15d64f138ac495718752fd73f2ef37eed33c29d1119f045744734dcc033';
-var isDevMode = process.argv[3] || false;
-var runArduino = process.argv[4] || false;
+var isDevMode = process.argv[3] == 'y' || false;
+var runArduino = process.argv[4] == 'y' || false;
 
 function startArduino() {
 	arduino = new SerialPort("/dev/ttyACM0",9600);
@@ -23,7 +23,7 @@ function startArduino() {
 
 function cycle(){
 	console.log("Cycle run.");
-	if (runArduino) setTimeout(function(){ arduino.write("8"); },2000);
+	if (runArduino){ arduino.write("8"); };
 }
 
 
@@ -57,7 +57,6 @@ app.listen(3000, () => {
 			return contract.getState(c);
 		}).then(res => {
 			console.log('done', res);
-			if (arduino) arduino.close();
 		});
 	})
 });
