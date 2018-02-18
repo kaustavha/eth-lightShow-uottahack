@@ -1,4 +1,4 @@
-# uOttaHack 2018 Hackjob: LightShow.eth
+# uOttaHack 2018: LightShow.eth
 ### Smart-contract co-operative city lighting system.
 
 **Team Members:**
