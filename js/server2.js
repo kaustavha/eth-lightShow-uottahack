@@ -19,6 +19,7 @@ var privKey = process.argv[2] || '463bf15d64f138ac495718752fd73f2ef37eed33c29d11
 var isDevMode = process.argv[3] == 'y' || false;
 var runArduino = process.argv[4] == 'y' || false;
 var arduinoPort = process.argv[5] || "/dev/ttyACM0";
+var path = require('path');
 
 function startArduino() {
 	arduino = new SerialPort(arduinoPort,9600);
@@ -38,10 +39,13 @@ function cycle(){
 
 if (runArduino) startArduino();
 
+app.use(express.static(path.join(__dirname, '../public')));
+
 app.get('/', (req, res) => {
 	if (c) contract.sendTx(c).then(console.log);
 	res.send('Hello World! Lets change the lights!!!!');
 })
+
 
 app.listen(3000, () => {
 	console.log('Example app listening on port 3000!');
