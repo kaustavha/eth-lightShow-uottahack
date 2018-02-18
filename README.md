@@ -1,5 +1,5 @@
 # uOttaHack 2018 Hackjob: Ether Lights
-### Smart-contract co-operative city lighting system.
+### **LightShow.eth**, smart-contract co-operative city lighting system.
 
 **Team Members:**
 - Dylan Cooper
@@ -9,8 +9,8 @@
 
 ## QUICKSTART
 
-connect the arduino.  
-start testrpc.  
+1. Connect the arduino 
+2. Start testrpc.  
 
 Console 1:
 ```
@@ -20,7 +20,7 @@ testrpc
 // copy one of the privkeys
 
 ```
-
+Console 2:
 ```
 npm i
 node js/server2.js <address privKey> <string y isDevMode> <string y runArduino>
