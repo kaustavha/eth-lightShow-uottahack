@@ -23,7 +23,7 @@ The use of the ethereum blockchain: - lines up with the governments open data in
 
 We want to improve, document and open source our code and methods for artists to be able to freely pick up and use to further their artistic endeavours. Also possibly set it up in the makerspace at uottawa.
 
-## QUICKSTART
+## Quickstart
 
 1. Connect the arduino 
 2. Start testrpc.  
@@ -44,3 +44,12 @@ node js/server2.js <address privKey> <string y isDevMode> <string y runArduino>
 ```
 
 Navigate to `localhost:3000` to trigger the block chain event again. 
+
+# Troubleshooting
+
+1. Ensure the serial port for the Arduino is correct in server2.js, on line **20**:
+```
+function startArduino() {
+	arduino = new SerialPort("/dev/ttyACM0",9600);
+}
+```
