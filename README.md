@@ -1,13 +1,13 @@
 # uOttaHack 2018: LightShow.eth
 ### Smart-contract co-operative city lighting system.
 
-**Team Members:**
+#### Team Members:
 - Dylan Cooper
 - Kaustav Haldar
 - Quinn Ingram
 - Ryan Fleck
 
-## Table Of Contents:
+#### Table Of Contents:
 1. Overview
 2. Examples
 3. Quickstart
