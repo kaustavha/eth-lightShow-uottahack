@@ -1,4 +1,4 @@
-var privateKey = '256357d39b29b6d49bb96b573cb5347b6f004560795e0bf1edf7dbcc1f88edc4';
+var privateKey = '4000ab3e0ced12363ea8253fd302a69c36da17bec0ae89ea469829112727cb91';
 
 const isDevMode = false;
 
@@ -41,7 +41,7 @@ function bindEventListener(contract, fn) {
 	log(contract);
     contract.onstatechange = function(val, sender) {
     	this.getBlock().then(function(block) {
-    		if (typeof fn == 'function') fn(val, sender);
+    		if (typeof fn == 'function') fn();
 	    	log('state change!');
 	    	log(val)
     		log(block)
