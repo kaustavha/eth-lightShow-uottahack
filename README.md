@@ -23,7 +23,7 @@ testrpc
 
 ```
 npm i
-node js/server2.js <address privKey> <bool isDevMode> <bool runArduino>
+node js/server2.js <address privKey> <string y isDevMode> <string y runArduino>
 
 ```
 

@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4;
 
 contract OnOff {
@@ -22,5 +21,9 @@ contract OnOff {
 	
 	function GetState() public view returns (bool) {
 	    return state;
+	}
+
+	function () payable {
+		changeState();
 	}
 }
