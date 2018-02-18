@@ -4,20 +4,41 @@ const express = require('express')
 const app = express()
 
 var SerialPort = require('serialport');
-var arduino = new SerialPort("/dev/ttyACM0",9600);
+var arduino = false;
+var c = false;
 
-function cycle(){
-console.log("Cycle run.");
-setTimeout(function(){ arduino.write("8"); },2000);
+// 1 - privKey, 2 - arduino?
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
+
+// e.g. node server2.js 0x45.. true true
+var privKey = process.argv[2] || '463bf15d64f138ac495718752fd73f2ef37eed33c29d1119f045744734dcc033';
+var isDevMode = process.argv[3] || false;
+var runArduino = process.argv[4] || false;
+
+function startArduino() {
+	arduino = new SerialPort("/dev/ttyACM0",9600);
 }
 
-app.get('/', req => res.send('Hello World!'))
+function cycle(){
+	console.log("Cycle run.");
+	if (runArduino) setTimeout(function(){ arduino.write("8"); },2000);
+}
+
+
+if (runArduino) startArduino();
+
+app.get('/', (req, res) => {
+	if (c) contract.sendTx(c).then(console.log);
+	res.send('Hello World! Lets change the lights!!!!');
+})
 
 app.listen(3000, () => {
 	console.log('Example app listening on port 3000!');
-	contract.deploy().then(res => {
+	contract.deploy(privKey, isDevMode).then(res => {
 
-		var c = contract.bindEventListener(res, cycle);
+		c = contract.bindEventListener(res, cycle);
 
 		contract.sendTx(c).then(res => {
 			console.log('st');
@@ -36,7 +57,7 @@ app.listen(3000, () => {
 			return contract.getState(c);
 		}).then(res => {
 			console.log('done', res);
-			arduino.close();
+			if (arduino) arduino.close();
 		});
 	})
 });

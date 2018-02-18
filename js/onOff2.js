@@ -1,6 +1,6 @@
-var privateKey = '4000ab3e0ced12363ea8253fd302a69c36da17bec0ae89ea469829112727cb91';
+// var privateKey = '463bf15d64f138ac495718752fd73f2ef37eed33c29d1119f045744734dcc033';
 
-const isDevMode = false;
+var isDevMode = false;
 
 function log(str) {
 	if (isDevMode) console.log(str);
@@ -21,10 +21,15 @@ var providers = ethers.providers;
 var network = providers.networks.rinkeby;
 var provider = new providers.JsonRpcProvider('http://localhost:8545', network);
 var deployTransaction = ethers.Contract.getDeployTransaction('0x'+byteCode, abiDefinition);
-privateKey = '0x'+privateKey;
-var wallet = new ethers.Wallet(privateKey, provider);
+// privateKey = '0x'+privateKey;
+// var wallet = new ethers.Wallet(privateKey, provider);
+var privateKey, wallet;
 
-function deploy() {
+function deploy(privKey, isDevMode) {
+	log('start deploy');
+	privateKey = '0x'+privKey;
+	wallet = new ethers.Wallet(privateKey, provider);
+	isDevMode = isDevMode;
 	return new Promise(resolve => {
 		var sendPromise = wallet.sendTransaction(deployTransaction);
 		sendPromise.then(function(transaction) {
@@ -32,13 +37,14 @@ function deploy() {
 			let addy = transaction.from;
 			
 			var contract = new ethers.Contract(contractAddress, abiDefinition, wallet);
+			log('fin deploy')
 			resolve(contract);
 		});
 	})
 }
 
 function bindEventListener(contract, fn) {
-	log(contract);
+	log('bindEventListener', contract, fn);
     contract.onstatechange = function(val, sender) {
     	this.getBlock().then(function(block) {
     		if (typeof fn == 'function') fn();

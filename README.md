@@ -6,3 +6,25 @@
 - Kaustav Haldar
 - Quinn Ingram
 - Ryan Fleck
+
+## QUICKSTART
+
+connect the arduino.  
+start testrpc.  
+
+Console 1:
+```
+npm i -g ethereumjs-testrpc
+testrpc
+
+// copy one of the privkeys
+
+```
+
+```
+npm i
+node js/server2.js <address privKey> <bool isDevMode> <bool runArduino>
+
+```
+
+Navigate to `localhost:3000` to trigger the block chain event again. 
