@@ -5,6 +5,7 @@ const solc = require('solc');
 const contractSrc = fs.readFileSync('../contracts/1OnOff.sol', 'utf8');
 
 const compiledCtrct = solc.compile(contractSrc);
+
 const byteCode = compiledCtrct.contracts[':OnOff'].bytecode;
 const abiDefinition = JSON.parse(compiledCtrct.contracts[':OnOff'].interface);
 
@@ -53,7 +54,7 @@ Private Keys
 
 **/
 
-var privateKey = '9e8abd014035f8283022e37f411b5f1c5e66d6e0a16845d38fe3bf28285f24b5';
+var privateKey = 'd38040a9c2574201d63cc5afe36c66faf6a62d541b3c7a4f7ae841ca6e08edac';
 
 privateKey = '0x'+privateKey;
 // var wallet = new ethers.Wallet(privateKey, provider);

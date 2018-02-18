@@ -13,7 +13,6 @@ contract OnOff {
 	function OnOff() public {
 		creator = msg.sender;
 		state = false;
-		i = 0;
 	}
 
 	function changeState() public {
@@ -21,7 +20,7 @@ contract OnOff {
 		StateChange(state, msg.sender);
 	}
 	
-	function GetState() public view returns (bool){
+	function GetState() public view returns (bool) {
 	    return state;
 	}
 }
