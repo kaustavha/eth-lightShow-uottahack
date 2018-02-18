@@ -1,3 +1,4 @@
+
 pragma solidity ^0.4;
 
 contract OnOff {
@@ -13,14 +14,16 @@ contract OnOff {
 		state = false;
 	}
 
-	function changeState() {
+	function changeState() public {
 		if (state == true) {
 			state = false;
 		} else if (state == false) {
 			state = true; 
 		}
-		StateChange(state, msg.sender)
-
+		StateChange(state, msg.sender);
 	}
-
+	
+	function GetState() public view returns (bool){
+	    return state;
+	}
 }
