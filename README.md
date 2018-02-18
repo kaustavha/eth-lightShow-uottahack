@@ -53,3 +53,4 @@ function startArduino() {
 	arduino = new SerialPort("/dev/ttyACM0",9600);
 }
 ```
+2. If needed, test the LEDs controlled by the Arduino by running `node red.js`, `blue.js`, `green.js`.
