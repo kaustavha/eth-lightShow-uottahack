@@ -9,17 +9,15 @@ contract OnOff {
 
 	address creator;
 	bool state;
-	function OnOff() public payable {
+	
+	function OnOff() public {
 		creator = msg.sender;
 		state = false;
+		i = 0;
 	}
 
 	function changeState() public {
-		if (state == true) {
-			state = false;
-		} else if (state == false) {
-			state = true; 
-		}
+		state = !state;
 		StateChange(state, msg.sender);
 	}
 	
