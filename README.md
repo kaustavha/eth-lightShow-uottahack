@@ -7,7 +7,13 @@
 - Quinn Ingram
 - Ryan Fleck
 
-**Overview:**
+## Table Of Contents:
+1. Overview
+2. Examples
+3. Quickstart
+4. Troubleshooting 
+
+**1. Overview:**
 
 LightShow.eth is an interactive art project meant for smart cities!
 
@@ -19,11 +25,12 @@ Our project features a 3d printed canada leaf with RGB leds behind it connected 
 
 The use of the ethereum blockchain: - lines up with the governments open data initiatives, opening up a historic view of public engagement with art instalments and spending at them, while saving the govt money since they dont need to host and serve all this data themselves - prevents abuse of these systems by creating financial discentives of weaponizing say light based art projects against people with epilepsy or wasting electricity - incentivizes the artists with profit from the installment, and pays for upkeep and the public record can motivate other artists
 
-=== Examples === - lights in a park the public can change the hue of depending on their mood - lights in a park that are kept at a low level and increased depending on people showing up or requesting more light - charity based christmas tree lighting that lights up as people contribute, public near the tree are motivated to contribute using easy cryptocurrency based donation mechanisms as the tree lighting slows down as the goal is neared - Fun group based art projects that many people interact with to turn on or complete a light based puzzle
+## 2. Examples
+- **Lights in a park** the public can change the hue of depending on their mood - lights in a park that are kept at a low level and increased depending on people showing up or requesting more light 
+- **Charity activated christmas tree lights** that illuminate as people contribute, public near the tree are motivated to contribute using easy cryptocurrency based donation mechanisms as the tree lighting slows down as the goal is neared - Fun group based art projects that many people interact with to turn on or complete a light based puzzle
+- We want to improve, document and open source our code and methods for artists to be able to freely pick up and use to further their artistic endeavours. Also possibly set it up in the **makerspace at uOttawa**.
 
-We want to improve, document and open source our code and methods for artists to be able to freely pick up and use to further their artistic endeavours. Also possibly set it up in the makerspace at uottawa.
-
-## Quickstart
+## 3. Quickstart
 
 1. Connect the arduino 
 2. Start testrpc.  
@@ -45,7 +52,7 @@ node js/server2.js <address privKey> <string y isDevMode> <string y runArduino>
 
 Navigate to `localhost:3000` to trigger the block chain event again. 
 
-## Troubleshooting
+## 4. Troubleshooting
 
 1. Ensure the serial port for the Arduino is correct in server2.js, on line **20**:
 ```
